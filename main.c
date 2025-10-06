@@ -1,21 +1,14 @@
-#include <stdio.h>
-
-int main() {
-    int a;
-
-    // 输入年龄值
-    printf("请输入年龄值:");
-    scanf("%d", &a);
-
-    // 计算表达式：a += a *= a /= a - 5
-    // 运算顺序从右向左：先算a /= a-5，再算a *= 结果，最后算a += 结果
-    a += a *= a /= a - 5;
-
-    // 输出结果
-    printf("结果是%d\n", a);
-
+#include<stdio.h>
+int main()
+{
+    int n, sum = 0;
+    printf("请输入一个自然数:");
+    scanf("%d", &n);
+    while (n <= 100)
+    {
+        sum = sum + n;
+        n++;
+    }
+    printf("结果为：%d\n", sum);
     return 0;
 }
-// 计算 a+=a*=a/=a-5 的结果=a/=a-5 的结果。输出结果如下:
-// 定义一个变量 a，将输入的年龄赋给a，再计算表达式
-// 请输入年龄值:28结果是2
