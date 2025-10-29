@@ -288,26 +288,86 @@ int main() {
 
 // 题目2：
 #include <stdio.h>
+
 int main() {
-    int num, digit, count = 0, reverse = 0, temp;
+    int num, temp, a1, a2, a3, a4, a5;  // 用a1-a5替代digit1-digit5
     printf("请输入一个不多于5位的正整数：");
     scanf("%d", &num);
-    temp = num;
-    // 计算位数并逆序
-    while (temp != 0) {
-        digit = temp % 10;
-        reverse = reverse * 10 + digit;
-        temp /= 10;
-        count++;
+    temp = num;  // 保存原数，用于后续逆序输出
+
+    // 提取每一位数字
+    a5 = num / 10000;  // 万位
+    num = num % 10000;
+    a4 = num / 1000;   // 千位
+    num = num % 1000;
+    a3 = num / 100;    // 百位
+    num = num % 100;
+    a2 = num / 10;     // 十位
+    a1 = num % 10;     // 个位
+
+    // 通过 switch 判定位数并处理输出
+    if (a5 != 0) {
+        switch (5) {
+            case 5:
+                printf("它是5位数\n");
+                printf("每一位数字：%d %d %d %d %d\n", a5, a4, a3, a2, a1);
+                printf("逆序：");
+                while (temp != 0) {
+                    printf("%d", temp % 10);
+                    temp = temp / 10;
+                }
+                printf("\n");
+                break;
+        }
+    } else if (a4 != 0) {
+        switch (4) {
+            case 4:
+                printf("它是4位数\n");
+                printf("每一位数字：%d %d %d %d\n", a4, a3, a2, a1);
+                printf("逆序：");
+                while (temp != 0) {
+                    printf("%d", temp % 10);
+                    temp = temp / 10;
+                }
+                printf("\n");
+                break;
+        }
+    } else if (a3 != 0) {
+        switch (3) {
+            case 3:
+                printf("它是3位数\n");
+                printf("每一位数字：%d %d %d\n", a3, a2, a1);
+                printf("逆序：");
+                while (temp != 0) {
+                    printf("%d", temp % 10);
+                    temp = temp / 10;
+                }
+                printf("\n");
+                break;
+        }
+    } else if (a2 != 0) {
+        switch (2) {
+            case 2:
+                printf("它是2位数\n");
+                printf("每一位数字：%d %d\n", a2, a1);
+                printf("逆序：");
+                while (temp != 0) {
+                    printf("%d", temp % 10);
+                    temp = temp / 10;
+                }
+                printf("\n");
+                break;
+        }
+    } else {
+        switch (1) {
+            case 1:
+                printf("它是1位数\n");
+                printf("每一位数字：%d\n", a1);
+                printf("逆序：%d\n", a1);
+                break;
+        }
     }
-    printf("它是%d位数\n", count);
-    printf("每一位数字：");
-    temp = reverse;
-    while (temp != 0) {
-        printf("%d ", temp % 10);
-        temp /= 10;
-    }
-    printf("\n逆序：%d\n", reverse);
+
     return 0;
 }
 
